@@ -52,6 +52,8 @@ E.g. when the wall and floor is one object, the player would fall through the fl
 This can be fixed by reducing the maximum velocity of objects.
 - When the player holds an object and moves through thisPortal, he loses the object if otherPortal is far away
 and if otherPortal is near, the object tries to fly to the player's hold target point again.
+- When an object is partly inside a portal surface on a thin wall, the player can pick it up from the other side when
+he is outside the portal deepTrigger.
 - When the space in front of otherPortal is blocked and an object goes through thisPortal, it does not see that before
 teleporting and may be teleported into a collider in front of otherPortal.
 
@@ -59,6 +61,10 @@ Possible next Features/ Fixes to implement:
 - Currently the player camera does not render the player model. But this has the drawback of also not rendering the
 player shadow. I did not find a fix for this yet.
 - Implement Air resistance for all Portable objects (currently only implemented for Player).
+The original Portal game does not have air resistance however.
+- When falling through a portal on the ground and then replacing it after the player entered it more than 50%,
+results in the player falling through the floor. This is possible because the player teleport point is at the player camera.
+Manual correction would be needed in these cases.
 - Currently the portal placement uses only a Overhang and Overlap detection, but its not able to correct them.
 For Overhangs raycasts have to made behind and in parallel to the portal surface to get the distance to the
 side face of the wall. The portal has to be moved by this distance to be fully on the wall.
